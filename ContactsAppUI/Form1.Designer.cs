@@ -52,6 +52,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Записать";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // textBox1
             // 
@@ -156,7 +157,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 14;
-
             // 
             // Form1
             // 
@@ -179,7 +179,6 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
-
             this.ResumeLayout(false);
             this.PerformLayout();
 
