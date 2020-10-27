@@ -25,11 +25,11 @@ namespace ContactsAppUI
             string default_path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/ContactApp/";
 
             //Сериализация
-            Project serel = new Project { Contacts = { Contact } };
-            ProjectManager.SaveToFile(serel, default_path);
+            Project serialize = new Project { Contacts = { Contact } };
+            ProjectManager.SaveToFile(serialize, default_path);
 
             //Десериализация
-            Project deser = ProjectManager.LoadFromFile(default_path);
+            Project deserialize = ProjectManager.LoadFromFile(default_path);
         }
     }
 }

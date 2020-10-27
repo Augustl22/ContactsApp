@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,9 @@ using Newtonsoft.Json;
 
 namespace ContactsApp
 {
+    /// <summary>
+    /// Класс менеджер проекта
+    /// </summary>
     public class ProjectManager
     {
         /// <summary>
@@ -15,14 +19,11 @@ namespace ContactsApp
         /// </summary>
         private const string FileName = "ContactsApp.notes";
 
-
-
         /// <summary>
         /// Метод сериализации данных проекта.
         /// </summary>
         public static void SaveToFile(Project project, string path)
         {
-
             Directory.CreateDirectory(path);
 
             path += FileName;
@@ -47,16 +48,20 @@ namespace ContactsApp
 
             JsonSerializer serializer = new JsonSerializer();
 
-            using (StreamReader sr = new StreamReader(path))
-            using (JsonTextReader reader = new JsonTextReader(sr))
+            try
             {
-
+                using (StreamReader sr = new StreamReader(path))
+                using (JsonTextReader reader = new JsonTextReader(sr))
                 project = serializer.Deserialize<Project>(reader);
 
                 if (project == null)
                 {
                     project = new Project();
                 }
+            }
+            catch
+            {
+                throw new ArgumentException("Error");
             }
             return project;
         }

@@ -6,20 +6,45 @@ using System.Threading.Tasks;
 
 namespace ContactsApp
 {
+    /// <summary>
+    /// Класс контакт
+    /// </summary>
     public class Contact : ICloneable
     {
+        /// <summary>
+        /// фамилия контакта
+        /// </summary>
         private string _surname;
 
+        /// <summary>
+        /// имя контакта
+        /// </summary>
         private string _name;
 
+        /// <summary>
+        /// номер телефона контакта
+        /// </summary>
         public PhoneNumber PhoneNumber { get; set; }
 
+        /// <summary>
+        /// дата рождение контакта
+        /// </summary>
         private DateTime _birthday;
 
+        /// <summary>
+        /// E-mail контакта
+        /// </summary>
         private string _email;
 
+        /// <summary>
+        /// id в соц. сети "Вконтакте" контакта 
+        /// </summary>
         private string _idvk;
 
+        /// <summary>
+        /// свойство фамилии
+        /// устанавливает значение если длинна фамилии не больше 50 символов и делает первую букву заглавной
+        /// </summary>
         public string Surname
         {
             get => _surname;
@@ -29,11 +54,15 @@ namespace ContactsApp
                 {
                     throw new ArgumentException("Фамилия не может превышать 50 символов");
                 }
-                if (value.Length != 0) { _surname = Char.ToUpper(value[0]) + value.Substring(1); }
+                _surname = Char.ToUpper(value[0]) + value.Substring(1);
             }
 
         }
 
+        /// <summary>
+        /// свойство имени
+        /// устанавливает значение если длинна имени не больше 50 символов и делает первую букву заглавной
+        /// </summary>
         public string Name
         {
             get => _name;
@@ -43,11 +72,15 @@ namespace ContactsApp
                 {
                     throw new ArgumentException("Имя не может превышать 50 символов");
                 }
-                if (value.Length != 0) { _name = Char.ToUpper(value[0]) + value.Substring(1); }
+                _name = Char.ToUpper(value[0]) + value.Substring(1);
             }
 
         }
 
+        /// <summary>
+        /// свойство e-mail
+        /// устанавливает значение если длинна email не больше 50 символов
+        /// </summary>
         public string Email
         {
             get => _email;
@@ -62,6 +95,10 @@ namespace ContactsApp
 
         }
 
+        /// <summary>
+        /// свойство ID Вконтакте
+        /// устанавливает значение если длинна id не больше 15 символов
+        /// </summary>
         public string IdVkontakte
         {
             get => _idvk;
@@ -76,12 +113,16 @@ namespace ContactsApp
 
         }
 
+        /// <summary>
+        /// свойство даты рождения контакта
+        /// устанавливает значение если дата не менее 1900 года и не более текущей даты
+        /// </summary>
         public DateTime Birthday
         {
             get => _birthday;
             set
             {
-                if((value.Year < 1900) && (value > DateTime.Today))
+                if ((value.Year < 1900) && (value > DateTime.Today))
                 {
                     throw new ArgumentException("Дата рождения не может быть меньше 1900 года и больше нынешней даты");
                 }
@@ -89,7 +130,12 @@ namespace ContactsApp
             }
         }
 
-
+        /// <summary>
+        /// метод клонирования объекта данного класса 
+        /// </summary>
+        /// <returns>
+        /// Возвращает копию объекта данного класса
+        /// </returns>
         public object Clone()
         {
             var phoneNumber = new PhoneNumber { Number = this.PhoneNumber.Number };
