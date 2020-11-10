@@ -11,7 +11,7 @@ namespace ContactsApp
     /// <summary>
     /// Класс менеджер проекта
     /// </summary>
-    public class ProjectManager
+    public static class ProjectManager
     {
         /// <summary>
         /// Имя файла для сериализации/десериализации данных проекта.
@@ -20,12 +20,19 @@ namespace ContactsApp
         private const string FileName = "ContactsApp.notes";
 
         /// <summary>
+        /// Путь до папки сохранения.
+        /// </summary>
+        public static string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/ContactApp/";
+
+        private static string pathToFile = path + FileName;
+
+        /// <summary>
         /// Метод сериализации данных проекта.
         /// </summary>
         public static void SaveToFile(Project project, string path)
         {
             Directory.CreateDirectory(path);
-
+            
             path += FileName;
 
             JsonSerializer serializer = new JsonSerializer();
@@ -61,7 +68,8 @@ namespace ContactsApp
             }
             catch
             {
-                throw new ArgumentException("Error");
+                project = new Project();
+                return project;
             }
             return project;
         }

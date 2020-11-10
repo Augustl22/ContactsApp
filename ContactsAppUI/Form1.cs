@@ -10,6 +10,7 @@ namespace ContactsAppUI
         public Form1()
         {
             InitializeComponent();
+            var project = new Project();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -22,14 +23,13 @@ namespace ContactsAppUI
             Contact.Email = textBox5.Text;
             Contact.IdVkontakte = textBox6.Text;
 
-            string default_path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/ContactApp/";
-
-            //Сериализация
+         
+            //Сериализация.
             Project serialize = new Project { Contacts = { Contact } };
-            ProjectManager.SaveToFile(serialize, default_path);
+            ProjectManager.SaveToFile(serialize, ProjectManager.path);
 
-            //Десериализация
-            Project deserialize = ProjectManager.LoadFromFile(default_path);
+            //Десериализация.
+            Project deserialize = ProjectManager.LoadFromFile(ProjectManager.path);
         }
     }
 }

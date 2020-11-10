@@ -12,114 +12,141 @@ namespace ContactsApp
     public class Contact : ICloneable
     {
         /// <summary>
-        /// фамилия контакта
+        /// Фамилия.
         /// </summary>
         private string _surname;
 
         /// <summary>
-        /// имя контакта
+        /// Имя.
         /// </summary>
         private string _name;
 
         /// <summary>
-        /// номер телефона контакта
-        /// </summary>
-        public PhoneNumber PhoneNumber { get; set; }
-
-        /// <summary>
-        /// дата рождение контакта
+        /// Дата рождение.
         /// </summary>
         private DateTime _birthday;
 
         /// <summary>
-        /// E-mail контакта
+        /// E-mail.
         /// </summary>
         private string _email;
 
         /// <summary>
-        /// id в соц. сети "Вконтакте" контакта 
+        /// Id в соц. сети "Вконтакте". 
         /// </summary>
         private string _idvk;
 
         /// <summary>
-        /// свойство фамилии
-        /// устанавливает значение если длинна фамилии не больше 50 символов и делает первую букву заглавной
+        /// Номер телефона.
+        /// </summary>
+        public PhoneNumber PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Свойство фамилии.
+        /// Устанавливает значение, если длинна фамилии не больше 50 символов и делает первую букву заглавной.
         /// </summary>
         public string Surname
         {
-            get => _surname;
+            get
+            {
+                return _surname;
+            }
             set
             {
-                if (value.Length > 50)
+                if (MaxLength(value, 50))
+                {
+                    _surname = Char.ToUpper(value[0]) + value.Substring(1);
+                }
+                else
                 {
                     throw new ArgumentException("Фамилия не может превышать 50 символов");
                 }
-                _surname = Char.ToUpper(value[0]) + value.Substring(1);
             }
 
         }
 
         /// <summary>
-        /// свойство имени
-        /// устанавливает значение если длинна имени не больше 50 символов и делает первую букву заглавной
+        /// Свойство имени.
+        /// Устанавливает значение, если длинна имени не больше 50 символов и делает первую букву заглавной.
         /// </summary>
         public string Name
         {
-            get => _name;
+            get
+            {
+                return _name;
+            }
             set
             {
-                if (value.Length > 50)
+                if (MaxLength(value, 50))
+                {
+                    _name = Char.ToUpper(value[0]) + value.Substring(1);
+                }
+                else
                 {
                     throw new ArgumentException("Имя не может превышать 50 символов");
                 }
-                _name = Char.ToUpper(value[0]) + value.Substring(1);
             }
 
         }
 
         /// <summary>
-        /// свойство e-mail
-        /// устанавливает значение если длинна email не больше 50 символов
+        /// Свойство e-mail.
+        /// Устанавливает значение, если длинна email не больше 50 символов.
         /// </summary>
         public string Email
         {
-            get => _email;
+            get
+            {
+                return _email;
+            }
             set
             {
-                if (value.Length > 50)
+                if (MaxLength(value, 50))
+                {
+                    _email = value;
+                }
+                else
                 {
                     throw new ArgumentException("E-mail не может превышать 50 символов");
                 }
-                _email = value;
             }
 
         }
 
         /// <summary>
-        /// свойство ID Вконтакте
-        /// устанавливает значение если длинна id не больше 15 символов
+        /// Свойство ID Вконтакте.
+        /// Устанавливает значение, если длинна id не больше 15 символов.
         /// </summary>
         public string IdVkontakte
         {
-            get => _idvk;
+            get
+            {
+                return _idvk;
+            }
             set
             {
-                if (value.Length > 15)
+                if (MaxLength(value, 15))
+                {
+                    _idvk = value;
+                }
+                else
                 {
                     throw new ArgumentException("ID Вконтакте не может превышать 15 символов");
                 }
-                _idvk = value;
             }
 
         }
 
         /// <summary>
-        /// свойство даты рождения контакта
-        /// устанавливает значение если дата не менее 1900 года и не более текущей даты
+        /// Свойство даты рождения.
+        /// Устанавливает значение, если дата не менее 1900 года и не более текущей даты.
         /// </summary>
         public DateTime Birthday
         {
-            get => _birthday;
+            get
+            {
+                return _birthday;
+            }
             set
             {
                 if ((value.Year < 1900) && (value > DateTime.Today))
@@ -130,15 +157,20 @@ namespace ContactsApp
             }
         }
 
+        bool MaxLength (string x, int j)
+        {
+            return x.Length < j;
+        }
+
+
         /// <summary>
-        /// метод клонирования объекта данного класса 
+        /// Метод клонирования объекта данного класса. 
         /// </summary>
         /// <returns>
-        /// Возвращает копию объекта данного класса
+        /// Возвращает копию объекта данного класса.
         /// </returns>
         public object Clone()
         {
-            var phoneNumber = new PhoneNumber { Number = this.PhoneNumber.Number };
             return new Contact
             {
                 Surname = this.Surname,
@@ -146,8 +178,7 @@ namespace ContactsApp
                 Birthday = this.Birthday,
                 Email = this.Email,
                 IdVkontakte = this.IdVkontakte,
-                PhoneNumber = phoneNumber
-            };
+             };
         }
     }
 }
