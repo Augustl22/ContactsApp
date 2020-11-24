@@ -39,7 +39,8 @@ namespace ContactsApp
         /// <summary>
         /// Номер телефона.
         /// </summary>
-        public PhoneNumber PhoneNumber { get; set; }
+        
+
 
         /// <summary>
         /// Свойство фамилии.
@@ -53,7 +54,8 @@ namespace ContactsApp
             }
             set
             {
-                if (MaxLength(value, 50))
+
+                if (MaxLength(value, 50)) 
                 {
                     _surname = Char.ToUpper(value[0]) + value.Substring(1);
                 }
@@ -61,6 +63,7 @@ namespace ContactsApp
                 {
                     throw new ArgumentException("Фамилия не может превышать 50 символов");
                 }
+
             }
 
         }
@@ -77,14 +80,16 @@ namespace ContactsApp
             }
             set
             {
+
                 if (MaxLength(value, 50))
                 {
                     _name = Char.ToUpper(value[0]) + value.Substring(1);
                 }
-                else
+                 else
                 {
                     throw new ArgumentException("Имя не может превышать 50 символов");
                 }
+
             }
 
         }
@@ -136,6 +141,8 @@ namespace ContactsApp
             }
 
         }
+        public PhoneNumber PhoneNumber { get; set; } = new PhoneNumber();
+        public Contact() { }
 
         /// <summary>
         /// Свойство даты рождения.
@@ -149,9 +156,14 @@ namespace ContactsApp
             }
             set
             {
-                if ((value.Year < 1900) && (value > DateTime.Today))
+                if ((value.Year < 1900))
                 {
-                    throw new ArgumentException("Дата рождения не может быть меньше 1900 года и больше нынешней даты");
+                    throw new ArgumentException("Дата рождения не может быть меньше 1900 года");
+
+                }
+                if(value > DateTime.Now)
+                {
+                    throw new ArgumentException("Дата рождения не может быть больше нынешней даты");
                 }
                 _birthday = value;
             }
@@ -171,8 +183,10 @@ namespace ContactsApp
         /// </returns>
         public object Clone()
         {
+            PhoneNumber phoneNumber = new PhoneNumber { Number = this.PhoneNumber.Number };
             return new Contact
             {
+                PhoneNumber = phoneNumber,
                 Surname = this.Surname,
                 Name = this.Name,
                 Birthday = this.Birthday,

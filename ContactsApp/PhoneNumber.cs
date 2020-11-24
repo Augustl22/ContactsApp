@@ -15,6 +15,7 @@ namespace ContactsApp
         /// Номер телефона.
         /// </summary>
         private long _number;
+        public PhoneNumber() { }
 
         /// <summary>
         /// Cвойство номера телефона. 
@@ -34,10 +35,11 @@ namespace ContactsApp
                 }
                 else
                 {
-                    throw new ArgumentException("Номер телефона должен начинаться с 7 и иметь длинну в 11 цифр " + value);
+                    throw new ArgumentException("Номер телефона должен начинаться с 7 и иметь длинну в 11 цифр ");
                 }
             }
         }
+        
         public object Clone()
         {
             return new PhoneNumber

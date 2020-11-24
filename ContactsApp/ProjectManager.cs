@@ -24,8 +24,6 @@ namespace ContactsApp
         /// </summary>
         public static string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/ContactApp/";
 
-        private static string pathToFile = path + FileName;
-
         /// <summary>
         /// Метод сериализации данных проекта.
         /// </summary>
