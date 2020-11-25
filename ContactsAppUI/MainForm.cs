@@ -21,6 +21,7 @@ namespace ContactsAppUI
                 ContactsListBox.Items.Add(contact.Surname);
             }
         }
+
         /// <summary>
         /// Метод добавления контакта
         /// </summary>
@@ -36,6 +37,7 @@ namespace ContactsAppUI
                 ProjectManager.SaveToFile(_project, ProjectManager.path);
             }
         }
+        
         /// <summary>
         /// Метод изменения контакта
         /// </summary>
@@ -44,7 +46,7 @@ namespace ContactsAppUI
             var selectedIndex = ContactsListBox.SelectedIndex;
             if (selectedIndex == -1)
             {
-                MessageBox.Show("Выберите запись для редактирования", "Не выбрана запись");
+                MessageBox.Show("Select a contact to edit", "Contact not selected");
             }
             else
             {
@@ -61,8 +63,10 @@ namespace ContactsAppUI
                     ContactsListBox.Items.Insert(selectedIndex, updatedContact.Surname);
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
                 }
+                
             }
         }
+
         /// <summary>
         /// Метод удаления контакта
         /// </summary>
@@ -71,13 +75,13 @@ namespace ContactsAppUI
             var selectedIndex = ContactsListBox.SelectedIndex;
             if (selectedIndex == -1)
             {
-                MessageBox.Show("Выберите запись для удаления", "Не выбрана запись");
+                MessageBox.Show("Select Contact to delete", "Contact not selected");
             }
             else
             {
                 Contact contact = _project.ContactsList[selectedIndex];
                 SurnameTextBox.Text = contact.Surname;
-                var dialogResult = MessageBox.Show("Do you really want to remove this contact: " + contact.Surname, "Подтверждение", MessageBoxButtons.OKCancel);
+                var dialogResult = MessageBox.Show("Do you really want to remove this contact: " + contact.Surname, "Confirmation", MessageBoxButtons.OKCancel);
                 if (dialogResult == DialogResult.OK)
                 {
                     _project.ContactsList.RemoveAt(selectedIndex);

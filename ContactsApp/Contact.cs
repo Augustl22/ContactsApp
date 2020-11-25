@@ -61,7 +61,7 @@ namespace ContactsApp
                 }
                 else
                 {
-                    throw new ArgumentException("Фамилия не может превышать 50 символов");
+                    throw new ArgumentException("Surname cannot exceed 50 symbols");
                 }
 
             }
@@ -87,7 +87,7 @@ namespace ContactsApp
                 }
                  else
                 {
-                    throw new ArgumentException("Имя не может превышать 50 символов");
+                    throw new ArgumentException("Name cannot exceed 50 symbols");
                 }
 
             }
@@ -112,7 +112,7 @@ namespace ContactsApp
                 }
                 else
                 {
-                    throw new ArgumentException("E-mail не может превышать 50 символов");
+                    throw new ArgumentException("E-mail cannot exceed 50 symbols");
                 }
             }
 
@@ -136,7 +136,7 @@ namespace ContactsApp
                 }
                 else
                 {
-                    throw new ArgumentException("ID Вконтакте не может превышать 15 символов");
+                    throw new ArgumentException("IDVkontakte cannot exceed 50 symbols");
                 }
             }
 
@@ -158,12 +158,12 @@ namespace ContactsApp
             {
                 if ((value.Year < 1900))
                 {
-                    throw new ArgumentException("Дата рождения не может быть меньше 1900 года");
+                    throw new ArgumentException("Date of birth cannot be less than 1900");
 
                 }
                 if(value > DateTime.Now)
                 {
-                    throw new ArgumentException("Дата рождения не может быть больше нынешней даты");
+                    throw new ArgumentException("Date of birth cannot be greater than the current date");
                 }
                 _birthday = value;
             }

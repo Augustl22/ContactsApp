@@ -73,7 +73,7 @@ namespace ContactsAppUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Неверный ввод данных");
+                MessageBox.Show(ex.Message, "Invalid data entry");
                 HasError = true;
             }
             if (HasError == false)

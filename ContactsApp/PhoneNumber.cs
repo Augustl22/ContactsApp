@@ -35,7 +35,7 @@ namespace ContactsApp
                 }
                 else
                 {
-                    throw new ArgumentException("Номер телефона должен начинаться с 7 и иметь длинну в 11 цифр ");
+                    throw new ArgumentException("Phone number must start with 7 and be 11 digits long ");
                 }
             }
         }
