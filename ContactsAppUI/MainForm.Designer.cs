@@ -64,16 +64,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SurnameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SurnameTextBox.Location = new System.Drawing.Point(325, 25);
+            this.SurnameTextBox.Location = new System.Drawing.Point(325, 27);
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.ReadOnly = true;
-            this.SurnameTextBox.Size = new System.Drawing.Size(301, 20);
+            this.SurnameTextBox.Size = new System.Drawing.Size(307, 20);
             this.SurnameTextBox.TabIndex = 2;
             // 
             // SurnameLabel
             // 
             this.SurnameLabel.AutoSize = true;
-            this.SurnameLabel.Location = new System.Drawing.Point(264, 28);
+            this.SurnameLabel.Location = new System.Drawing.Point(267, 30);
             this.SurnameLabel.Name = "SurnameLabel";
             this.SurnameLabel.Size = new System.Drawing.Size(52, 13);
             this.SurnameLabel.TabIndex = 3;
@@ -82,7 +82,7 @@
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(281, 54);
+            this.NameLabel.Location = new System.Drawing.Point(281, 56);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(38, 13);
             this.NameLabel.TabIndex = 4;
@@ -94,16 +94,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NameTextBox.Location = new System.Drawing.Point(325, 51);
+            this.NameTextBox.Location = new System.Drawing.Point(325, 53);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.ReadOnly = true;
-            this.NameTextBox.Size = new System.Drawing.Size(301, 20);
+            this.NameTextBox.Size = new System.Drawing.Size(307, 20);
             this.NameTextBox.TabIndex = 5;
             // 
             // BirthdayLabel
             // 
             this.BirthdayLabel.AutoSize = true;
-            this.BirthdayLabel.Location = new System.Drawing.Point(271, 79);
+            this.BirthdayLabel.Location = new System.Drawing.Point(271, 81);
             this.BirthdayLabel.Name = "BirthdayLabel";
             this.BirthdayLabel.Size = new System.Drawing.Size(48, 13);
             this.BirthdayLabel.TabIndex = 7;
@@ -112,7 +112,7 @@
             // PhoneLabel
             // 
             this.PhoneLabel.AutoSize = true;
-            this.PhoneLabel.Location = new System.Drawing.Point(278, 106);
+            this.PhoneLabel.Location = new System.Drawing.Point(278, 108);
             this.PhoneLabel.Name = "PhoneLabel";
             this.PhoneLabel.Size = new System.Drawing.Size(41, 13);
             this.PhoneLabel.TabIndex = 8;
@@ -124,10 +124,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PhoneTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.PhoneTextBox.Location = new System.Drawing.Point(325, 103);
+            this.PhoneTextBox.Location = new System.Drawing.Point(325, 105);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.ReadOnly = true;
-            this.PhoneTextBox.Size = new System.Drawing.Size(301, 20);
+            this.PhoneTextBox.Size = new System.Drawing.Size(307, 20);
             this.PhoneTextBox.TabIndex = 9;
             // 
             // EmailTextBox
@@ -136,16 +136,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EmailTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EmailTextBox.Location = new System.Drawing.Point(325, 129);
+            this.EmailTextBox.Location = new System.Drawing.Point(325, 131);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.ReadOnly = true;
-            this.EmailTextBox.Size = new System.Drawing.Size(301, 20);
+            this.EmailTextBox.Size = new System.Drawing.Size(307, 20);
             this.EmailTextBox.TabIndex = 10;
             // 
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(281, 132);
+            this.EmailLabel.Location = new System.Drawing.Point(281, 134);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Size = new System.Drawing.Size(38, 13);
             this.EmailLabel.TabIndex = 11;
@@ -154,7 +154,7 @@
             // IdVkLabel
             // 
             this.IdVkLabel.AutoSize = true;
-            this.IdVkLabel.Location = new System.Drawing.Point(274, 158);
+            this.IdVkLabel.Location = new System.Drawing.Point(274, 160);
             this.IdVkLabel.Name = "IdVkLabel";
             this.IdVkLabel.Size = new System.Drawing.Size(45, 13);
             this.IdVkLabel.TabIndex = 12;
@@ -166,10 +166,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.IdVkTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.IdVkTextBox.Location = new System.Drawing.Point(325, 155);
+            this.IdVkTextBox.Location = new System.Drawing.Point(325, 157);
             this.IdVkTextBox.Name = "IdVkTextBox";
             this.IdVkTextBox.ReadOnly = true;
-            this.IdVkTextBox.Size = new System.Drawing.Size(301, 20);
+            this.IdVkTextBox.Size = new System.Drawing.Size(307, 20);
             this.IdVkTextBox.TabIndex = 13;
             // 
             // BirthdayDateTimePicker
@@ -178,7 +178,7 @@
             this.BirthdayDateTimePicker.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
             this.BirthdayDateTimePicker.CalendarTitleForeColor = System.Drawing.SystemColors.Desktop;
             this.BirthdayDateTimePicker.Enabled = false;
-            this.BirthdayDateTimePicker.Location = new System.Drawing.Point(326, 77);
+            this.BirthdayDateTimePicker.Location = new System.Drawing.Point(326, 79);
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
             this.BirthdayDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.BirthdayDateTimePicker.TabIndex = 14;
@@ -188,7 +188,7 @@
             this.ContactsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ContactsListBox.FormattingEnabled = true;
-            this.ContactsListBox.Location = new System.Drawing.Point(12, 51);
+            this.ContactsListBox.Location = new System.Drawing.Point(12, 53);
             this.ContactsListBox.Name = "ContactsListBox";
             this.ContactsListBox.Size = new System.Drawing.Size(251, 290);
             this.ContactsListBox.TabIndex = 13;
@@ -197,8 +197,8 @@
             // AddContactButton
             // 
             this.AddContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddContactButton.Image = global::ContactsAppUI.Properties.Resources.icons8_плюс_16;
-            this.AddContactButton.Location = new System.Drawing.Point(12, 355);
+            this.AddContactButton.Image = global::ContactsAppUI.Properties.Resources.pluse_16x16;
+            this.AddContactButton.Location = new System.Drawing.Point(12, 357);
             this.AddContactButton.Name = "AddContactButton";
             this.AddContactButton.Size = new System.Drawing.Size(26, 26);
             this.AddContactButton.TabIndex = 15;
@@ -207,7 +207,7 @@
             // 
             // FindTextBox
             // 
-            this.FindTextBox.Location = new System.Drawing.Point(41, 25);
+            this.FindTextBox.Location = new System.Drawing.Point(41, 27);
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(222, 20);
             this.FindTextBox.TabIndex = 20;
@@ -215,11 +215,11 @@
             // FindLabel
             // 
             this.FindLabel.AutoSize = true;
-            this.FindLabel.Location = new System.Drawing.Point(10, 28);
+            this.FindLabel.Location = new System.Drawing.Point(9, 30);
             this.FindLabel.Name = "FindLabel";
-            this.FindLabel.Size = new System.Drawing.Size(27, 13);
+            this.FindLabel.Size = new System.Drawing.Size(30, 13);
             this.FindLabel.TabIndex = 19;
-            this.FindLabel.Text = "Find";
+            this.FindLabel.Text = "Find:";
             // 
             // menuStrip1
             // 
@@ -297,8 +297,8 @@
             // EditContactButton
             // 
             this.EditContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditContactButton.Image = global::ContactsAppUI.Properties.Resources.icons8_редактировать_свойство_16;
-            this.EditContactButton.Location = new System.Drawing.Point(45, 355);
+            this.EditContactButton.Image = global::ContactsAppUI.Properties.Resources.Edite_16x16;
+            this.EditContactButton.Location = new System.Drawing.Point(45, 357);
             this.EditContactButton.Name = "EditContactButton";
             this.EditContactButton.Size = new System.Drawing.Size(26, 26);
             this.EditContactButton.TabIndex = 22;
@@ -308,8 +308,8 @@
             // RemoveContactButton
             // 
             this.RemoveContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveContactButton.Image = global::ContactsAppUI.Properties.Resources.icons8_минус_16;
-            this.RemoveContactButton.Location = new System.Drawing.Point(77, 355);
+            this.RemoveContactButton.Image = global::ContactsAppUI.Properties.Resources.minuse_16x16;
+            this.RemoveContactButton.Location = new System.Drawing.Point(77, 357);
             this.RemoveContactButton.Name = "RemoveContactButton";
             this.RemoveContactButton.Size = new System.Drawing.Size(26, 26);
             this.RemoveContactButton.TabIndex = 23;

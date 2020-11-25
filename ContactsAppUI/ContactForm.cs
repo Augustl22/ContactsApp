@@ -47,20 +47,22 @@ namespace ContactsAppUI
             }
         }
 
-        private void CancleButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
 
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
+        /// <summary>
+        /// Кнопка OK при добавление контакта
+        /// </summary>
         private void OKButton_Click(object sender, EventArgs e)
         {
             long number;
-            bool flag;
+            bool HasError;
             try
             {
-                flag = true;
+                HasError = false;
                 _contact.Surname = SurnameTextBox.Text;
                 _contact.Name = NameTextBox.Text;
                 _contact.Birthday = BirthdayDateTimePicker.Value;
@@ -72,15 +74,17 @@ namespace ContactsAppUI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Неверный ввод данных");
-                flag = false;
+                HasError = true;
             }
-            if (flag == true)
+            if (HasError == false)
             {
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
-
+        /// <summary>
+        /// Считывание фамилии с textbox'a и выделение, если неправильный ввод
+        /// </summary>
         private void SurnameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -93,7 +97,9 @@ namespace ContactsAppUI
                 SurnameTextBox.BackColor = Color.LightSalmon;
             }
         }
-
+        /// <summary>
+        /// Считывание имени с textbox'a и выделение, если неправильный ввод
+        /// </summary>
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -106,7 +112,9 @@ namespace ContactsAppUI
                 NameTextBox.BackColor = Color.LightSalmon;
             }
         }
-
+        /// <summary>
+        /// Считывание даты дня рождения с DateTimePicker'а
+        /// </summary>
         private void BirthdayDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -116,7 +124,9 @@ namespace ContactsAppUI
             catch (Exception)
             { }
         }
-
+        /// <summary>
+        /// Считывание e-mail с textbox'a и выделение, если неправильный ввод
+        /// </summary>
         private void EmailTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -129,7 +139,9 @@ namespace ContactsAppUI
                 EmailTextBox.BackColor = Color.LightSalmon;
             }
         }
-
+        /// <summary>
+        /// Считывание IdVk с textbox'a и выделение, если неправильный ввод
+        /// </summary>
         private void IdVkTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -142,7 +154,9 @@ namespace ContactsAppUI
                 IdVkTextBox.BackColor = Color.LightSalmon;
             }
         }
-
+        /// <summary>
+        /// Считывание номера телефона с textbox'a и выделение, если неправильный ввод
+        /// </summary>
         private void PhoneTextBox_TextChanged(object sender, EventArgs e)
         {
             long number;

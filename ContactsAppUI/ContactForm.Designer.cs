@@ -56,7 +56,7 @@
             // 
             this.IdVkTextBox.Location = new System.Drawing.Point(64, 142);
             this.IdVkTextBox.Name = "IdVkTextBox";
-            this.IdVkTextBox.Size = new System.Drawing.Size(339, 20);
+            this.IdVkTextBox.Size = new System.Drawing.Size(347, 20);
             this.IdVkTextBox.TabIndex = 25;
             this.IdVkTextBox.TextChanged += new System.EventHandler(this.IdVkTextBox_TextChanged);
             // 
@@ -82,7 +82,7 @@
             // 
             this.EmailTextBox.Location = new System.Drawing.Point(64, 116);
             this.EmailTextBox.Name = "EmailTextBox";
-            this.EmailTextBox.Size = new System.Drawing.Size(339, 20);
+            this.EmailTextBox.Size = new System.Drawing.Size(347, 20);
             this.EmailTextBox.TabIndex = 22;
             this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
@@ -90,7 +90,7 @@
             // 
             this.PhoneTextBox.Location = new System.Drawing.Point(64, 90);
             this.PhoneTextBox.Name = "PhoneTextBox";
-            this.PhoneTextBox.Size = new System.Drawing.Size(339, 20);
+            this.PhoneTextBox.Size = new System.Drawing.Size(347, 20);
             this.PhoneTextBox.TabIndex = 21;
             this.PhoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged);
             // 
@@ -116,7 +116,7 @@
             // 
             this.NameTextBox.Location = new System.Drawing.Point(64, 38);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(339, 20);
+            this.NameTextBox.Size = new System.Drawing.Size(347, 20);
             this.NameTextBox.TabIndex = 18;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
@@ -142,25 +142,25 @@
             // 
             this.SurnameTextBox.Location = new System.Drawing.Point(64, 12);
             this.SurnameTextBox.Name = "SurnameTextBox";
-            this.SurnameTextBox.Size = new System.Drawing.Size(339, 20);
+            this.SurnameTextBox.Size = new System.Drawing.Size(347, 20);
             this.SurnameTextBox.TabIndex = 15;
             this.SurnameTextBox.TextChanged += new System.EventHandler(this.SurnameTextBox_TextChanged);
             // 
             // CancleButton
             // 
             this.CancleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancleButton.Location = new System.Drawing.Point(328, 174);
+            this.CancleButton.Location = new System.Drawing.Point(336, 174);
             this.CancleButton.Name = "CancleButton";
             this.CancleButton.Size = new System.Drawing.Size(75, 23);
             this.CancleButton.TabIndex = 27;
             this.CancleButton.Text = "Cancel";
             this.CancleButton.UseVisualStyleBackColor = true;
-            this.CancleButton.Click += new System.EventHandler(this.CancleButton_Click);
+            this.CancleButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(247, 174);
+            this.OKButton.Location = new System.Drawing.Point(255, 174);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
             this.OKButton.TabIndex = 28;
@@ -187,6 +187,8 @@
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.SurnameLabel);
             this.Controls.Add(this.SurnameTextBox);
+            this.MaximumSize = new System.Drawing.Size(439, 248);
+            this.MinimumSize = new System.Drawing.Size(439, 248);
             this.Name = "ContactForm";
             this.Text = "Add/Edit Contact";
             this.ResumeLayout(false);

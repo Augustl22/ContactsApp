@@ -13,44 +13,32 @@ namespace ContactsAppUI
         public MainForm()
         {
             InitializeComponent();
-            this.Text = "ContactsApp";
-            this.Size = new Size(660, 451);
+
             _project = ProjectManager.LoadFromFile(ProjectManager.path);
-            if (_project != null)
+
+            foreach (var contact in _project.ContactsList)
             {
-                int i = 0;
-                while (i != _project.ContactsList.Count)
-                {
-                    ContactsListBox.Items.Add(_project.ContactsList[i].Surname);
-                    i++;
-                }
-            }
-            else
-            {
-                _project = new Project();
+                ContactsListBox.Items.Add(contact.Surname);
             }
         }
-
-        private void AddContact ()
+        /// <summary>
+        /// Метод добавления контакта
+        /// </summary>
+        private void AddContact()
         {
-            var newForm = new ContactForm();
-            var i = newForm.ShowDialog();
-            if (i == DialogResult.OK)
+            var form = new ContactForm();
+            var dialogResult = form.ShowDialog();
+            if (dialogResult == DialogResult.OK)
             {
-                var Contact = newForm.Contact;
+                var Contact = form.Contact;
                 _project.ContactsList.Add(Contact);
-                for (int k = 0; k != _project.ContactsList.Count - 1; k++)
-                {
-                    ContactsListBox.Items.RemoveAt(0);
-                }
-                for (int k = 0; k != _project.ContactsList.Count; k++)
-                {
-                    ContactsListBox.Items.Add(_project.ContactsList[k].Surname);
-                }
+                ContactsListBox.Items.Add(Contact.Surname);
                 ProjectManager.SaveToFile(_project, ProjectManager.path);
             }
         }
-
+        /// <summary>
+        /// Метод изменения контакта
+        /// </summary>
         private void EditContact ()
         {
             var selectedIndex = ContactsListBox.SelectedIndex;
@@ -60,32 +48,24 @@ namespace ContactsAppUI
             }
             else
             {
-
                 var selectedContact = _project.ContactsList[selectedIndex];
-                var newForm = new ContactForm();
-                newForm.Contact = selectedContact;
-                var i = newForm.ShowDialog();
-                if (i == DialogResult.OK)
+                var form = new ContactForm();
+                form.Contact = selectedContact;
+                var dialogResult = form.ShowDialog();
+                if (dialogResult == DialogResult.OK)
                 {
-                    var updatedContact = newForm.Contact;
+                    var updatedContact = form.Contact;
+                    _project.ContactsList.RemoveAt(selectedIndex);
+                    ContactsListBox.Items.RemoveAt(selectedIndex);
                     _project.ContactsList.Insert(selectedIndex, updatedContact);
                     ContactsListBox.Items.Insert(selectedIndex, updatedContact.Surname);
-                    _project.ContactsList.RemoveAt(selectedIndex + 1);
-                    ContactsListBox.Items.RemoveAt(selectedIndex + 1);
-
-                    for (int k = 0; k != _project.ContactsList.Count; k++)
-                    {
-                        ContactsListBox.Items.RemoveAt(0);
-                    }
-                    for (int k = 0; k != _project.ContactsList.Count; k++)
-                    {
-                        ContactsListBox.Items.Add(_project.ContactsList[k].Surname);
-                    }
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
                 }
             }
         }
-
+        /// <summary>
+        /// Метод удаления контакта
+        /// </summary>
         private void RemoveContact()
         {
             var selectedIndex = ContactsListBox.SelectedIndex;
@@ -97,8 +77,8 @@ namespace ContactsAppUI
             {
                 Contact contact = _project.ContactsList[selectedIndex];
                 SurnameTextBox.Text = contact.Surname;
-                var i = MessageBox.Show("Do you really want to remove this contact: " + contact.Surname, "Подтверждение", MessageBoxButtons.OKCancel);
-                if (i == DialogResult.OK)
+                var dialogResult = MessageBox.Show("Do you really want to remove this contact: " + contact.Surname, "Подтверждение", MessageBoxButtons.OKCancel);
+                if (dialogResult == DialogResult.OK)
                 {
                     _project.ContactsList.RemoveAt(selectedIndex);
                     ContactsListBox.Items.RemoveAt(selectedIndex);
@@ -158,16 +138,16 @@ namespace ContactsAppUI
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var newForm = new AboutForm();
-            newForm.Show();
+            var form = new AboutForm();
+            form.Show();
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
-                var newForm = new AboutForm();
-                newForm.Show();
+                var form = new AboutForm();
+                form.Show();
             }
         }
 

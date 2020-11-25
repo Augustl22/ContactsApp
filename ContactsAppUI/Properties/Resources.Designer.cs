@@ -63,9 +63,9 @@ namespace ContactsAppUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_минус_16 {
+        internal static System.Drawing.Bitmap Edite_16x16 {
             get {
-                object obj = ResourceManager.GetObject("icons8-минус-16", resourceCulture);
+                object obj = ResourceManager.GetObject("Edite 16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ContactsAppUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_плюс_16 {
+        internal static System.Drawing.Bitmap minuse_16x16 {
             get {
-                object obj = ResourceManager.GetObject("icons8-плюс-16", resourceCulture);
+                object obj = ResourceManager.GetObject("minuse 16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace ContactsAppUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_редактировать_свойство_16 {
+        internal static System.Drawing.Bitmap pluse_16x16 {
             get {
-                object obj = ResourceManager.GetObject("icons8-редактировать-свойство-16", resourceCulture);
+                object obj = ResourceManager.GetObject("pluse 16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
