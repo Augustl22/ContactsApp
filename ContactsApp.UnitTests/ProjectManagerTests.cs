@@ -99,7 +99,6 @@ namespace ContactsApp.UnitTests
                     Assert.AreEqual(sourceProject.ContactsList[i].IdVkontakte, actualFilename.ContactsList[i].IdVkontakte);
                     Assert.AreEqual(sourceProject.ContactsList[i].Email, actualFilename.ContactsList[i].Email);
                 }
-
             });
         }
 

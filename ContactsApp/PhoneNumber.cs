@@ -29,10 +29,6 @@ namespace ContactsApp
             }
             set
             {
-                if (value.ToString().Length == 0)
-                {
-                    throw new ArgumentException("Phone number is required");
-                }
                 if ((value.ToString().Length == 11) && (value.ToString()[0] == '7'))
                 {
                     _number = value;
