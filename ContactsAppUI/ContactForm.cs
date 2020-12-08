@@ -11,8 +11,14 @@ using ContactsApp;
 
 namespace ContactsAppUI
 {
+
     public partial class ContactForm : Form
     {
+        private void ContactForm_Load(object sender, EventArgs e)
+        {
+            ShowIcon = false;
+        }
+
         private Contact _contact = new Contact();
 
         public ContactForm()
@@ -171,5 +177,7 @@ namespace ContactsAppUI
                 PhoneTextBox.BackColor = Color.LightSalmon;
             }
         }
+
+
     }
 }

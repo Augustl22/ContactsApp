@@ -9,13 +9,13 @@ namespace ContactsApp
     /// <summary>
     /// Класс номера телефона
     /// </summary>
-    public class PhoneNumber : ICloneable
+    public class PhoneNumber 
     {
         /// <summary>
         /// Номер телефона.
         /// </summary>
         private long _number;
-        public PhoneNumber() { }
+        //public PhoneNumber() { }
 
         /// <summary>
         /// Cвойство номера телефона. 
@@ -29,6 +29,10 @@ namespace ContactsApp
             }
             set
             {
+                if (value.ToString().Length == 0)
+                {
+                    throw new ArgumentException("Phone number is required");
+                }
                 if ((value.ToString().Length == 11) && (value.ToString()[0] == '7'))
                 {
                     _number = value;
@@ -39,14 +43,7 @@ namespace ContactsApp
                 }
             }
         }
-        
-        public object Clone()
-        {
-            return new PhoneNumber
-            {
-                Number = this.Number
-            };
-        }
+
     }
 }
     

@@ -37,12 +37,6 @@ namespace ContactsApp
         private string _idvk;
 
         /// <summary>
-        /// Номер телефона.
-        /// </summary>
-        
-
-
-        /// <summary>
         /// Свойство фамилии.
         /// Устанавливает значение, если длинна фамилии не больше 50 символов и делает первую букву заглавной.
         /// </summary>
@@ -54,8 +48,11 @@ namespace ContactsApp
             }
             set
             {
-
-                if (MaxLength(value, 50)) 
+                if (value.Length == 0)
+                {
+                    throw new ArgumentException("Surname is required");
+                }
+                if (MaxLength(value, 50))
                 {
                     _surname = Char.ToUpper(value[0]) + value.Substring(1);
                 }
@@ -80,12 +77,15 @@ namespace ContactsApp
             }
             set
             {
-
+                if (value.Length == 0)
+                {
+                    throw new ArgumentException("Name is required");
+                }
                 if (MaxLength(value, 50))
                 {
                     _name = Char.ToUpper(value[0]) + value.Substring(1);
                 }
-                 else
+                else
                 {
                     throw new ArgumentException("Name cannot exceed 50 symbols");
                 }
@@ -142,6 +142,7 @@ namespace ContactsApp
 
         }
         public PhoneNumber PhoneNumber { get; set; } = new PhoneNumber();
+
         public Contact() { }
 
         /// <summary>
@@ -161,7 +162,7 @@ namespace ContactsApp
                     throw new ArgumentException("Date of birth cannot be less than 1900");
 
                 }
-                if(value > DateTime.Now)
+                if (value > DateTime.Now)
                 {
                     throw new ArgumentException("Date of birth cannot be greater than the current date");
                 }
@@ -169,7 +170,7 @@ namespace ContactsApp
             }
         }
 
-        bool MaxLength (string x, int j)
+        bool MaxLength(string x, int j)
         {
             return x.Length < j;
         }
@@ -192,7 +193,7 @@ namespace ContactsApp
                 Birthday = this.Birthday,
                 Email = this.Email,
                 IdVkontakte = this.IdVkontakte,
-             };
+            };
         }
     }
 }

@@ -56,6 +56,7 @@ namespace ContactsAppUI
                 var dialogResult = form.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
+                    
                     var updatedContact = form.Contact;
                     _project.ContactsList.RemoveAt(selectedIndex);
                     ContactsListBox.Items.RemoveAt(selectedIndex);
@@ -63,7 +64,8 @@ namespace ContactsAppUI
                     ContactsListBox.Items.Insert(selectedIndex, updatedContact.Surname);
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
                 }
-                
+                ContactsListBox.SetSelected(selectedIndex, true);
+
             }
         }
 
@@ -163,6 +165,11 @@ namespace ContactsAppUI
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
             RemoveContact();
+        }
+
+        private void ContactsListBox_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

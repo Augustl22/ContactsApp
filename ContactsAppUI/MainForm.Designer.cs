@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
             this.SurnameLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
@@ -192,6 +193,7 @@
             this.ContactsListBox.Name = "ContactsListBox";
             this.ContactsListBox.Size = new System.Drawing.Size(251, 290);
             this.ContactsListBox.TabIndex = 13;
+            this.ContactsListBox.Click += new System.EventHandler(this.ContactsListBox_Click);
             this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
             // 
             // AddContactButton
@@ -340,10 +342,11 @@
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.PhoneTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(560, 275);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "ContactsApp";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

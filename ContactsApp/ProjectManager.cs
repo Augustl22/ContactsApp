@@ -48,9 +48,7 @@ namespace ContactsApp
         public static Project LoadFromFile(string path)
         {
             path += FileName;
-
             Project project;
-
             JsonSerializer serializer = new JsonSerializer();
 
             try
@@ -62,6 +60,7 @@ namespace ContactsApp
                 if (project == null)
                 {
                     project = new Project();
+                    return project;
                 }
             }
             catch

@@ -191,6 +191,7 @@
             this.MinimumSize = new System.Drawing.Size(439, 248);
             this.Name = "ContactForm";
             this.Text = "Add/Edit Contact";
+            this.Load += new System.EventHandler(this.ContactForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
