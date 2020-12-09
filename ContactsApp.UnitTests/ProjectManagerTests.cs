@@ -81,7 +81,6 @@ namespace ContactsApp.UnitTests
 
             var location = Assembly.GetExecutingAssembly().Location;
             var testDataFolder = Path.GetDirectoryName(location) + @"\TestData\";
-            var expectedFilename = testDataFolder + "\\ContactsApp.notes";
 
             //Act
             var actualFilename = ProjectManager.LoadFromFile(testDataFolder);
@@ -126,8 +125,6 @@ namespace ContactsApp.UnitTests
             var testDataFolder = Path.GetDirectoryName(location) + @"\TestData\EmptyFile\";
             ProjectManager.LoadFromFile(testDataFolder);
         }
-
-
     }
 }
 

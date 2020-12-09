@@ -38,7 +38,6 @@ namespace ContactsApp.UnitTests
                     contact.Surname = sourceSurname;
                 }
             );
-
         }
 
         [Test]
@@ -75,7 +74,6 @@ namespace ContactsApp.UnitTests
                     contact.Name = sourceName;
                 }
             );
-
         }
 
         [Test]
