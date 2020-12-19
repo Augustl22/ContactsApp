@@ -16,5 +16,7 @@ namespace ContactsApp
         /// </summary>
         public List<Contact> ContactsList = new List<Contact>();
 
+
+
     }
 }

@@ -102,7 +102,7 @@ namespace ContactsApp.UnitTests
         }
 
         [Test]
-        public void LoadToFile_Catch()
+        public void LoadToFile_ExistFile_LoadCorrectly()
         {
             //Setup
 
@@ -119,7 +119,7 @@ namespace ContactsApp.UnitTests
         }
 
         [Test]
-        public void LoadToFile()
+        public void LoadToFile_EmptyFile_CreateNewProject()
         {
             var location = Assembly.GetExecutingAssembly().Location;
             var testDataFolder = Path.GetDirectoryName(location) + @"\TestData\EmptyFile\";
