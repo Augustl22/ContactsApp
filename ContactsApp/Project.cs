@@ -16,7 +16,18 @@ namespace ContactsApp
         /// </summary>
         public List<Contact> ContactsList = new List<Contact>();
 
-
-
+        public static Project BirthdayList(Project birthPeople, DateTime today)
+        {
+            Project birthproject = new Project();
+            for (int i = 0; i < birthPeople.ContactsList.Count; i++)
+            {
+                if ((birthPeople.ContactsList[i].Birthday.Day == today.Day) &&
+                    (birthPeople.ContactsList[i].Birthday.Month == today.Month))
+                {
+                    birthproject.ContactsList.Add(birthPeople.ContactsList[i]);
+                }
+            }
+            return birthproject;
+        }
     }
 }

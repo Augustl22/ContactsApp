@@ -110,13 +110,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pluse 16x16.png" />
+    <None Include="Resources\pluse16x16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Edite 16x16.png" />
+    <None Include="Resources\Edite16x16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\minuse 16x16.png" />
+    <None Include="Resources\minuse16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Birthday.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

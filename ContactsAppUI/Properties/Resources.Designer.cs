@@ -63,6 +63,26 @@ namespace ContactsAppUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Birthday {
+            get {
+                object obj = ResourceManager.GetObject("Birthday", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Birthday1 {
+            get {
+                object obj = ResourceManager.GetObject("Birthday1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Edite_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Edite 16x16", resourceCulture);

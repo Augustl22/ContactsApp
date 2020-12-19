@@ -20,6 +20,8 @@ namespace ContactsAppUI
             {
                 ContactsListBox.Items.Add(contact.Surname);
             }
+
+            BirthdayReminder();
         }
 
         /// <summary>
@@ -36,6 +38,8 @@ namespace ContactsAppUI
                 ContactsListBox.Items.Add(Contact.Surname);
                 ProjectManager.SaveToFile(_project, ProjectManager.path);
             }
+            BirthdaytextBox.Clear();
+            BirthdayReminder();
         }
         
         /// <summary>
@@ -67,6 +71,8 @@ namespace ContactsAppUI
                 ContactsListBox.SetSelected(selectedIndex, true);
 
             }
+            BirthdaytextBox.Clear();
+            BirthdayReminder();
         }
 
         /// <summary>
@@ -91,6 +97,8 @@ namespace ContactsAppUI
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
                 }
             }
+            BirthdaytextBox.Clear();
+            BirthdayReminder();
         }
 
         private void AddContactButton_Click(object sender, EventArgs e)
@@ -167,9 +175,34 @@ namespace ContactsAppUI
             RemoveContact();
         }
 
-        private void ContactsListBox_Click(object sender, EventArgs e)
+        public void BirthdayReminder()
         {
-            
+            Project birthPeople = Project.BirthdayList(_project, DateTime.Today);
+            for (int i = 0; i != birthPeople.ContactsList.Count; i++)
+            {
+                BirthdaytextBox.Text = BirthdaytextBox.Text + birthPeople.ContactsList[i].Surname;
+                if (i+1  == birthPeople.ContactsList.Count)
+                {
+                    BirthdaytextBox.Text = BirthdaytextBox.Text + ".";
+                }
+                else
+                {
+                    BirthdaytextBox.Text = BirthdaytextBox.Text + ", ";
+                }
+            }
+
+            if (BirthdaytextBox.Text == "")
+            {
+                BirthpictureBox.Visible = false;
+                BirthdayTodayLabel.Visible = false;
+                BirthdaytextBox.Visible = false;
+            }
+            else
+            {
+                BirthdayTodayLabel.Visible = true;
+                BirthpictureBox.Visible = true;
+                BirthdaytextBox.Visible = true;
+            }
         }
     }
 }
