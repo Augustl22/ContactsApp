@@ -21,24 +21,19 @@ namespace ContactsApp
 
         public static Project SortList(Project contacts)
         {
-            if (contacts != null)
-            {
-                contacts.ContactsList.Sort((x, y) => String.Compare(x.Surname, y.Surname));
-            }
+            contacts.ContactsList.Sort((x, y) => String.Compare(x.Surname, y.Surname));
             return contacts;
         }
 
         public static Project FindBySearch(Project contacts, string find)
         {
             Project searchList = new Project();
-            if (contacts != null)
+            var search = Char.ToUpper(find[0])+find.Substring(1);
+            for (int i = 0; i < contacts.ContactsList.Count; i++)
             {
-                for (int i = 0; i < contacts.ContactsList.Count; i++)
+                if (contacts.ContactsList[i].Surname.Contains(search) || contacts.ContactsList[i].Name.Contains(search))
                 {
-                    if (contacts.ContactsList[i].Surname.Contains(find) || contacts.ContactsList[i].Name.Contains(find))
-                    {
-                        searchList.ContactsList.Add(contacts.ContactsList[i]);
-                    }
+                    searchList.ContactsList.Add(contacts.ContactsList[i]);
                 }
             }
             if (searchList.ContactsList.Count == 0)

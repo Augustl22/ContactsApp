@@ -9,7 +9,6 @@ namespace ContactsAppUI
     public partial class MainForm : Form
     {
         private Project _project;
-        private Project _searchProject;
 
         public MainForm()
         {
