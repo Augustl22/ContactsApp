@@ -9,18 +9,14 @@ namespace ContactsAppUI
     public partial class MainForm : Form
     {
         private Project _project;
+        private Project _searchProject;
 
         public MainForm()
         {
             InitializeComponent();
 
             _project = ProjectManager.LoadFromFile(ProjectManager.path);
-
-            foreach (var contact in _project.ContactsList)
-            {
-                ContactsListBox.Items.Add(contact.Surname);
-            }
-
+            SortListBox();
             BirthdayReminder();
         }
 
@@ -33,12 +29,13 @@ namespace ContactsAppUI
             var dialogResult = form.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                var Contact = form.Contact;
-                _project.ContactsList.Add(Contact);
-                ContactsListBox.Items.Add(Contact.Surname);
+                var contact = form.Contact;
+                _project.ContactsList.Add(contact);
+                ContactsListBox.Items.Add(contact.Surname);
                 ProjectManager.SaveToFile(_project, ProjectManager.path);
             }
-            BirthdaytextBox.Clear();
+
+            SortListBox();
             BirthdayReminder();
         }
         
@@ -69,9 +66,9 @@ namespace ContactsAppUI
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
                 }
                 ContactsListBox.SetSelected(selectedIndex, true);
-
             }
-            BirthdaytextBox.Clear();
+
+            SortListBox();
             BirthdayReminder();
         }
 
@@ -97,7 +94,6 @@ namespace ContactsAppUI
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
                 }
             }
-            BirthdaytextBox.Clear();
             BirthdayReminder();
         }
 
@@ -177,6 +173,7 @@ namespace ContactsAppUI
 
         public void BirthdayReminder()
         {
+            BirthdaytextBox.Clear();
             Project birthPeople = Project.BirthdayList(_project, DateTime.Today);
             for (int i = 0; i != birthPeople.ContactsList.Count; i++)
             {
@@ -200,8 +197,41 @@ namespace ContactsAppUI
             else
             {
                 BirthdayTodayLabel.Visible = true;
-                BirthpictureBox.Visible = true;
                 BirthdaytextBox.Visible = true;
+                BirthpictureBox.Visible = true;
+            }
+        }
+
+        public void SortListBox()
+        {
+            _project = Project.SortList(_project);
+
+            ContactsListBox.Items.Clear();
+            foreach (var contact in _project.ContactsList)
+            {
+                ContactsListBox.Items.Add(contact.Surname);
+            }
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (FindTextBox.Text == "")
+            {
+                _project = ProjectManager.LoadFromFile(ProjectManager.path);
+                SortListBox();
+            }
+            else
+            {
+                _project = ProjectManager.LoadFromFile(ProjectManager.path);
+                _project = Project.FindBySearch(_project, FindTextBox.Text);
+                if (_project == null)
+                {
+                    ContactsListBox.Items.Clear();
+                }
+                else
+                {
+                    SortListBox();
+                }
             }
         }
     }

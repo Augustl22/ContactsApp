@@ -205,6 +205,7 @@
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(222, 20);
             this.FindTextBox.TabIndex = 20;
+            this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
             // 
             // FindLabel
             // 
