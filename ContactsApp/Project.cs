@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactsApp
 {
@@ -28,7 +22,7 @@ namespace ContactsApp
         public static Project FindBySearch(Project contacts, string find)
         {
             Project searchList = new Project();
-            var search = Char.ToUpper(find[0])+find.Substring(1);
+            var search = Char.ToUpper(find[0]) + find.Substring(1);
             for (int i = 0; i < contacts.ContactsList.Count; i++)
             {
                 if (contacts.ContactsList[i].Surname.Contains(search) || contacts.ContactsList[i].Name.Contains(search))

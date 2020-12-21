@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Windows;
 using ContactsApp;
-using System.Drawing;
 
 namespace ContactsAppUI
 {
@@ -37,11 +35,11 @@ namespace ContactsAppUI
             SortListBox();
             BirthdayReminder();
         }
-        
+
         /// <summary>
         /// Метод изменения контакта
         /// </summary>
-        private void EditContact ()
+        private void EditContact()
         {
             var selectedIndex = ContactsListBox.SelectedIndex;
             if (selectedIndex == -1)
@@ -56,7 +54,7 @@ namespace ContactsAppUI
                 var dialogResult = form.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
-                    
+
                     var updatedContact = form.Contact;
                     _project.ContactsList.RemoveAt(selectedIndex);
                     ContactsListBox.Items.RemoveAt(selectedIndex);
@@ -177,7 +175,7 @@ namespace ContactsAppUI
             for (int i = 0; i != birthPeople.ContactsList.Count; i++)
             {
                 BirthdaytextBox.Text = BirthdaytextBox.Text + birthPeople.ContactsList[i].Surname;
-                if (i+1  == birthPeople.ContactsList.Count)
+                if (i + 1 == birthPeople.ContactsList.Count)
                 {
                     BirthdaytextBox.Text = BirthdaytextBox.Text + ".";
                 }

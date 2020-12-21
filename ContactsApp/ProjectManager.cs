@@ -1,9 +1,5 @@
 ﻿using System.IO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace ContactsApp
@@ -30,7 +26,7 @@ namespace ContactsApp
         public static void SaveToFile(Project project, string path)
         {
             Directory.CreateDirectory(path);
-            
+
             path += FileName;
 
             JsonSerializer serializer = new JsonSerializer();
@@ -55,7 +51,7 @@ namespace ContactsApp
             {
                 using (StreamReader sr = new StreamReader(path))
                 using (JsonTextReader reader = new JsonTextReader(sr))
-                project = serializer.Deserialize<Project>(reader);
+                    project = serializer.Deserialize<Project>(reader);
 
                 if (project == null)
                 {

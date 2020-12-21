@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactsApp
 {
@@ -174,7 +170,6 @@ namespace ContactsApp
         {
             return x.Length < j;
         }
-
 
         /// <summary>
         /// Метод клонирования объекта данного класса. 

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactsApp
 {
     /// <summary>
     /// Класс номера телефона
     /// </summary>
-    public class PhoneNumber 
+    public class PhoneNumber
     {
         /// <summary>
         /// Номер телефона.
@@ -39,7 +35,5 @@ namespace ContactsApp
                 }
             }
         }
-
     }
 }
-    
