@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -7,12 +8,15 @@ namespace ContactsAppUI
     public partial class MainForm : Form
     {
         private Project _project;
+        private List<Contact> _sortProjectList = new List<Contact>();
+
 
         public MainForm()
         {
             InitializeComponent();
 
             _project = ProjectManager.LoadFromFile(ProjectManager.path);
+            _sortProjectList = _project.ContactsList;
             SortListBox();
             BirthdayReminder();
         }
@@ -28,10 +32,10 @@ namespace ContactsAppUI
             {
                 var contact = form.Contact;
                 _project.ContactsList.Add(contact);
+                _sortProjectList.Add(contact);
                 ContactsListBox.Items.Add(contact.Surname);
                 ProjectManager.SaveToFile(_project, ProjectManager.path);
             }
-
             SortListBox();
             BirthdayReminder();
         }
@@ -41,30 +45,34 @@ namespace ContactsAppUI
         /// </summary>
         private void EditContact()
         {
-            var selectedIndex = ContactsListBox.SelectedIndex;
-            if (selectedIndex == -1)
+
+            var selectedViewedIndex = ContactsListBox.SelectedIndex;
+
+            if (selectedViewedIndex == -1)
             {
-                MessageBox.Show("Select a contact to edit", "Contact not selected");
+                MessageBox.Show("Select the entry to edit", "No entry");
             }
             else
             {
-                var selectedContact = _project.ContactsList[selectedIndex];
+                var selectedContact = _sortProjectList[selectedViewedIndex];
                 var form = new ContactForm();
                 form.Contact = selectedContact;
                 var dialogResult = form.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
-
                     var updatedContact = form.Contact;
-                    _project.ContactsList.RemoveAt(selectedIndex);
-                    ContactsListBox.Items.RemoveAt(selectedIndex);
-                    _project.ContactsList.Insert(selectedIndex, updatedContact);
-                    ContactsListBox.Items.Insert(selectedIndex, updatedContact.Surname);
+                    var ProjectIndex = _project.ContactsList.IndexOf(selectedContact);
+                    _project.ContactsList.RemoveAt(ProjectIndex);
+                    _sortProjectList.RemoveAt(selectedViewedIndex);
+                    ContactsListBox.Items.RemoveAt(selectedViewedIndex);
+                    _project.ContactsList.Insert(ProjectIndex, updatedContact);
+                    _sortProjectList.Insert(selectedViewedIndex, updatedContact);
+                    ContactsListBox.Items.Insert(selectedViewedIndex, updatedContact.Surname);
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
+                    SortListBox();
+                    //ContactsListBox.SetSelected(projectIndex, true);
                 }
-                ContactsListBox.SetSelected(selectedIndex, true);
             }
-
             SortListBox();
             BirthdayReminder();
         }
@@ -77,16 +85,18 @@ namespace ContactsAppUI
             var selectedIndex = ContactsListBox.SelectedIndex;
             if (selectedIndex == -1)
             {
-                MessageBox.Show("Select Contact to delete", "Contact not selected");
+                MessageBox.Show("ВSelect the entry to delete", "No entry");
             }
             else
             {
-                Contact contact = _project.ContactsList[selectedIndex];
+                Contact contact = _sortProjectList[selectedIndex];
                 SurnameTextBox.Text = contact.Surname;
-                var dialogResult = MessageBox.Show("Do you really want to remove this contact: " + contact.Surname, "Confirmation", MessageBoxButtons.OKCancel);
+                var dialogResult = MessageBox.Show("Delete this entry?", "Confirm", MessageBoxButtons.OKCancel);
                 if (dialogResult == DialogResult.OK)
                 {
-                    _project.ContactsList.RemoveAt(selectedIndex);
+                    var ProjectIndex = _project.ContactsList.IndexOf(contact);
+                    _sortProjectList.RemoveAt(selectedIndex);
+                    _project.ContactsList.RemoveAt(ProjectIndex);
                     ContactsListBox.Items.RemoveAt(selectedIndex);
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
                 }
@@ -104,13 +114,8 @@ namespace ContactsAppUI
             var selectedIndex = ContactsListBox.SelectedIndex;
             if (selectedIndex >= 0)
             {
-                Contact contact = _project.ContactsList[selectedIndex];
-                SurnameTextBox.Text = contact.Surname;
-                NameTextBox.Text = contact.Name;
-                BirthdayDateTimePicker.Value = contact.Birthday;
-                PhoneTextBox.Text = contact.PhoneNumber.Number.ToString();
-                EmailTextBox.Text = contact.Email;
-                IdVkTextBox.Text = contact.IdVkontakte;
+                Contact contact = _sortProjectList[selectedIndex];
+                ChangeSelectContact(contact);
             }
             else
             {
@@ -121,6 +126,15 @@ namespace ContactsAppUI
                 EmailTextBox.Text = "";
                 IdVkTextBox.Text = "";
             }
+        }
+        private void ChangeSelectContact(Contact contact)
+        {
+            SurnameTextBox.Text = contact.Surname;
+            NameTextBox.Text = contact.Name;
+            BirthdayDateTimePicker.Value = contact.Birthday;
+            PhoneTextBox.Text = contact.PhoneNumber.Number.ToString();
+            EmailTextBox.Text = contact.Email;
+            IdVkTextBox.Text = contact.IdVkontakte;
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -201,10 +215,11 @@ namespace ContactsAppUI
 
         public void SortListBox()
         {
-            _project = Project.SortList(_project);
+            _sortProjectList = Project.SortList(_sortProjectList);
 
             ContactsListBox.Items.Clear();
-            foreach (var contact in _project.ContactsList)
+
+            foreach (var contact in _sortProjectList)
             {
                 ContactsListBox.Items.Add(contact.Surname);
             }
@@ -214,14 +229,14 @@ namespace ContactsAppUI
         {
             if (FindTextBox.Text == "")
             {
-                _project = ProjectManager.LoadFromFile(ProjectManager.path);
+                _sortProjectList = _project.ContactsList;
                 SortListBox();
             }
             else
             {
-                _project = ProjectManager.LoadFromFile(ProjectManager.path);
-                _project = Project.FindBySearch(_project, FindTextBox.Text);
-                if (_project == null)
+                _sortProjectList = _project.ContactsList;
+                _sortProjectList = Project.FindBySearch(_sortProjectList, FindTextBox.Text);
+                if (_sortProjectList == null)
                 {
                     ContactsListBox.Items.Clear();
                 }

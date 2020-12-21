@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ContactsApp
 {
@@ -13,30 +14,29 @@ namespace ContactsApp
         /// </summary>
         public List<Contact> ContactsList = new List<Contact>();
 
-        public static Project SortList(Project contacts)
+        public static List<Contact> SortList(List<Contact> contacts)
         {
-            contacts.ContactsList.Sort((x, y) => String.Compare(x.Surname, y.Surname));
-            return contacts;
+            return contacts.OrderBy(contact => contact.Surname).ToList();
         }
 
-        public static Project FindBySearch(Project contacts, string find)
+        public static List<Contact> FindBySearch(List<Contact> contacts, string find)
         {
-            Project searchList = new Project();
-            var search = Char.ToUpper(find[0]) + find.Substring(1);
-            for (int i = 0; i < contacts.ContactsList.Count; i++)
+            List<Contact> returnList = new List<Contact>();
+            for (int i = 0; i < contacts.Count; i++)
             {
-                if (contacts.ContactsList[i].Surname.Contains(search) || contacts.ContactsList[i].Name.Contains(search))
+                if (contacts[i].Surname.Contains(find) || contacts[i].Name.Contains(find))
                 {
-                    searchList.ContactsList.Add(contacts.ContactsList[i]);
+                    returnList.Add(contacts[i]);
                 }
             }
-            if (searchList.ContactsList.Count == 0)
+
+            if (returnList.Count == 0)
             {
-                return null;
+                return returnList;
             }
 
-            SortList(searchList);
-            return searchList;
+            SortList(returnList);
+            return returnList;
         }
 
         public static Project BirthdayList(Project birthPeople, DateTime today)
