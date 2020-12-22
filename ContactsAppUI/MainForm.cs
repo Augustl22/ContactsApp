@@ -7,18 +7,27 @@ namespace ContactsAppUI
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private Project _project;
-        private List<Contact> _sortProjectList = new List<Contact>();
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        private List<Contact> _displayedContacts = new List<Contact>();
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
 
             _project = ProjectManager.LoadFromFile(ProjectManager.path);
-            _sortProjectList = _project.ContactsList;
+            _displayedContacts = _project.ContactsList;
             SortListBox();
-            BirthdayReminder();
+            ShowBirthdayReminder();
         }
 
         /// <summary>
@@ -32,12 +41,12 @@ namespace ContactsAppUI
             {
                 var contact = form.Contact;
                 _project.ContactsList.Add(contact);
-                _sortProjectList.Add(contact);
+                _displayedContacts.Add(contact);
                 ContactsListBox.Items.Add(contact.Surname);
                 ProjectManager.SaveToFile(_project, ProjectManager.path);
             }
             SortListBox();
-            BirthdayReminder();
+            ShowBirthdayReminder();
         }
 
         /// <summary>
@@ -46,36 +55,37 @@ namespace ContactsAppUI
         private void EditContact()
         {
 
-            var selectedViewedIndex = ContactsListBox.SelectedIndex;
+            var selectedIndex = ContactsListBox.SelectedIndex;
 
-            if (selectedViewedIndex == -1)
+            if (selectedIndex == -1)
             {
                 MessageBox.Show("Select the entry to edit", "No entry");
             }
             else
             {
-                var selectedContact = _sortProjectList[selectedViewedIndex];
+                var selectedContact = _displayedContacts[selectedIndex];
                 var form = new ContactForm();
                 form.Contact = selectedContact;
                 var dialogResult = form.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
                     var updatedContact = form.Contact;
-                    var ProjectIndex = _project.ContactsList.IndexOf(selectedContact);
-                    _project.ContactsList.RemoveAt(ProjectIndex);
-                    _sortProjectList.RemoveAt(selectedViewedIndex);
-                    ContactsListBox.Items.RemoveAt(selectedViewedIndex);
-                    _project.ContactsList.Insert(ProjectIndex, updatedContact);
-                    _sortProjectList.Insert(selectedViewedIndex, updatedContact);
-                    ContactsListBox.Items.Insert(selectedViewedIndex, updatedContact.Surname);
+                    var projectIndex = _project.ContactsList.IndexOf(selectedContact);
+                    _project.ContactsList.RemoveAt(projectIndex);
+                    _displayedContacts.RemoveAt(selectedIndex);
+                    ContactsListBox.Items.RemoveAt(selectedIndex);
+                    _project.ContactsList.Insert(projectIndex, updatedContact);
+                    _displayedContacts.Insert(selectedIndex, updatedContact);
+                    ContactsListBox.Items.Insert(selectedIndex, updatedContact.Surname);
+                    FindTextBox.Clear();
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
-                    ContactsListBox.SetSelected(ProjectIndex, true);
                     SortListBox();
+                    var viewContact = _displayedContacts.IndexOf(updatedContact);
+                    ContactsListBox.SetSelected(viewContact, true);
 
                 }
             }
-            SortListBox();
-            BirthdayReminder();
+            ShowBirthdayReminder();
         }
 
         /// <summary>
@@ -86,28 +96,23 @@ namespace ContactsAppUI
             var selectedIndex = ContactsListBox.SelectedIndex;
             if (selectedIndex == -1)
             {
-                MessageBox.Show("ВSelect the entry to delete", "No entry");
+                MessageBox.Show("Select the entry to delete", "No entry");
             }
             else
             {
-                Contact contact = _sortProjectList[selectedIndex];
+                Contact contact = _displayedContacts[selectedIndex];
                 SurnameTextBox.Text = contact.Surname;
                 var dialogResult = MessageBox.Show("Delete this entry?", "Confirm", MessageBoxButtons.OKCancel);
                 if (dialogResult == DialogResult.OK)
                 {
                     var ProjectIndex = _project.ContactsList.IndexOf(contact);
-                    _sortProjectList.RemoveAt(selectedIndex);
+                    _displayedContacts.RemoveAt(selectedIndex);
                     _project.ContactsList.RemoveAt(ProjectIndex);
                     ContactsListBox.Items.RemoveAt(selectedIndex);
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
                 }
             }
-            BirthdayReminder();
-        }
-
-        private void AddContactButton_Click(object sender, EventArgs e)
-        {
-            AddContact();
+            ShowBirthdayReminder();
         }
 
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,7 +120,7 @@ namespace ContactsAppUI
             var selectedIndex = ContactsListBox.SelectedIndex;
             if (selectedIndex >= 0)
             {
-                Contact contact = _sortProjectList[selectedIndex];
+                Contact contact = _displayedContacts[selectedIndex];
                 ChangeSelectContact(contact);
             }
             else
@@ -136,6 +141,65 @@ namespace ContactsAppUI
             PhoneTextBox.Text = contact.PhoneNumber.Number.ToString();
             EmailTextBox.Text = contact.Email;
             IdVkTextBox.Text = contact.IdVkontakte;
+        }
+
+        private void ShowBirthdayReminder()
+        {
+            BirthdaytextBox.Clear();
+            Project birthPeople = Project.BirthdayList(_project, DateTime.Today);
+            for (int i = 0; i != birthPeople.ContactsList.Count; i++)
+            {
+                BirthdaytextBox.Text = BirthdaytextBox.Text + birthPeople.ContactsList[i].Surname;
+                if (i + 1 == birthPeople.ContactsList.Count)
+                {
+                    BirthdaytextBox.Text = BirthdaytextBox.Text + ".";
+                }
+                else
+                {
+                    BirthdaytextBox.Text = BirthdaytextBox.Text + ", ";
+                }
+            }
+
+            var isVible = BirthdaytextBox.Text == "";
+            BirthpictureBox.Visible = !isVible;
+            BirthdayTodayLabel.Visible = !isVible;
+            BirthdaytextBox.Visible = !isVible;
+
+        }
+
+        private void SortListBox()
+        {
+
+            _displayedContacts = Project.SortList(_displayedContacts);
+
+            ContactsListBox.Items.Clear();
+
+            foreach (var contact in _displayedContacts)
+            {
+                ContactsListBox.Items.Add(contact.Surname);
+            }
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (FindTextBox.Text == "")
+            {
+                _displayedContacts = _project.ContactsList;
+                SortListBox();
+            }
+            else
+            {
+                _displayedContacts = _project.ContactsList;
+                _displayedContacts = Project.FindBySearch(_displayedContacts, FindTextBox.Text);
+                if (_displayedContacts == null)
+                {
+                    ContactsListBox.Items.Clear();
+                }
+                else
+                {
+                    SortListBox();
+                }
+            }
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -183,69 +247,9 @@ namespace ContactsAppUI
             RemoveContact();
         }
 
-        public void BirthdayReminder()
+        private void AddContactButton_Click(object sender, EventArgs e)
         {
-            BirthdaytextBox.Clear();
-            Project birthPeople = Project.BirthdayList(_project, DateTime.Today);
-            for (int i = 0; i != birthPeople.ContactsList.Count; i++)
-            {
-                BirthdaytextBox.Text = BirthdaytextBox.Text + birthPeople.ContactsList[i].Surname;
-                if (i + 1 == birthPeople.ContactsList.Count)
-                {
-                    BirthdaytextBox.Text = BirthdaytextBox.Text + ".";
-                }
-                else
-                {
-                    BirthdaytextBox.Text = BirthdaytextBox.Text + ", ";
-                }
-            }
-
-            if (BirthdaytextBox.Text == "")
-            {
-                BirthpictureBox.Visible = false;
-                BirthdayTodayLabel.Visible = false;
-                BirthdaytextBox.Visible = false;
-            }
-            else
-            {
-                BirthdayTodayLabel.Visible = true;
-                BirthdaytextBox.Visible = true;
-                BirthpictureBox.Visible = true;
-            }
-        }
-
-        public void SortListBox()
-        {
-            _sortProjectList = Project.SortList(_sortProjectList);
-
-            ContactsListBox.Items.Clear();
-
-            foreach (var contact in _sortProjectList)
-            {
-                ContactsListBox.Items.Add(contact.Surname);
-            }
-        }
-
-        private void FindTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (FindTextBox.Text == "")
-            {
-                _sortProjectList = _project.ContactsList;
-                SortListBox();
-            }
-            else
-            {
-                _sortProjectList = _project.ContactsList;
-                _sortProjectList = Project.FindBySearch(_sortProjectList, FindTextBox.Text);
-                if (_sortProjectList == null)
-                {
-                    ContactsListBox.Items.Clear();
-                }
-                else
-                {
-                    SortListBox();
-                }
-            }
+            AddContact();
         }
     }
 }

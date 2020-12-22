@@ -303,6 +303,8 @@
             // RemoveContactButton
             // 
             this.RemoveContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RemoveContactButton.FlatAppearance.BorderSize = 0;
+            this.RemoveContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveContactButton.Image = global::ContactsAppUI.Properties.Resources.minuse_16x16;
             this.RemoveContactButton.Location = new System.Drawing.Point(77, 364);
             this.RemoveContactButton.Name = "RemoveContactButton";
@@ -314,6 +316,8 @@
             // EditContactButton
             // 
             this.EditContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.EditContactButton.FlatAppearance.BorderSize = 0;
+            this.EditContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditContactButton.Image = global::ContactsAppUI.Properties.Resources.Edite_16x16;
             this.EditContactButton.Location = new System.Drawing.Point(45, 364);
             this.EditContactButton.Name = "EditContactButton";
@@ -325,12 +329,16 @@
             // AddContactButton
             // 
             this.AddContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddContactButton.BackColor = System.Drawing.SystemColors.Control;
+            this.AddContactButton.FlatAppearance.BorderSize = 0;
+            this.AddContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddContactButton.Image = global::ContactsAppUI.Properties.Resources.pluse_16x16;
             this.AddContactButton.Location = new System.Drawing.Point(12, 364);
             this.AddContactButton.Name = "AddContactButton";
+            this.AddContactButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.AddContactButton.Size = new System.Drawing.Size(26, 26);
             this.AddContactButton.TabIndex = 15;
-            this.AddContactButton.UseVisualStyleBackColor = true;
+            this.AddContactButton.UseVisualStyleBackColor = false;
             this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
             // 
             // BirthpictureBox
