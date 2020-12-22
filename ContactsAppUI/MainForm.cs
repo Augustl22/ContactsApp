@@ -69,8 +69,9 @@ namespace ContactsAppUI
                     _sortProjectList.Insert(selectedViewedIndex, updatedContact);
                     ContactsListBox.Items.Insert(selectedViewedIndex, updatedContact.Surname);
                     ProjectManager.SaveToFile(_project, ProjectManager.path);
+                    ContactsListBox.SetSelected(ProjectIndex, true);
                     SortListBox();
-                    //ContactsListBox.SetSelected(projectIndex, true);
+
                 }
             }
             SortListBox();

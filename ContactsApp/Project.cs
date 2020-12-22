@@ -21,22 +21,23 @@ namespace ContactsApp
 
         public static List<Contact> FindBySearch(List<Contact> contacts, string find)
         {
-            List<Contact> returnList = new List<Contact>();
+            List<Contact> searchList = new List<Contact>();
+            var search = Char.ToUpper(find[0]) + find.Substring(1);
             for (int i = 0; i < contacts.Count; i++)
             {
-                if (contacts[i].Surname.Contains(find) || contacts[i].Name.Contains(find))
+                if (contacts[i].Surname.Contains(search) || contacts[i].Name.Contains(search))
                 {
-                    returnList.Add(contacts[i]);
+                    searchList.Add(contacts[i]);
                 }
             }
 
-            if (returnList.Count == 0)
+            if (searchList.Count == 0)
             {
-                return returnList;
+                return searchList;
             }
 
-            SortList(returnList);
-            return returnList;
+            SortList(searchList);
+            return searchList;
         }
 
         public static Project BirthdayList(Project birthPeople, DateTime today)
