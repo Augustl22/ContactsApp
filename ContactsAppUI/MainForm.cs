@@ -8,17 +8,17 @@ namespace ContactsAppUI
     public partial class MainForm : Form
     {
         /// <summary>
-        /// 
+        /// Список контактов в файле
         /// </summary>
         private Project _project;
         
         /// <summary>
-        /// 
+        /// Отображаемый список контактов
         /// </summary>
         private List<Contact> _displayedContacts = new List<Contact>();
 
         /// <summary>
-        /// 
+        /// Главное окто приложения
         /// </summary>
         public MainForm()
         {
