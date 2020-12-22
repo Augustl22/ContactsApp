@@ -61,7 +61,7 @@ namespace ContactsAppUI
 
             if (selectedIndex == -1)
             {
-                MessageBox.Show("Select the entry to edit", "No entry");
+                MessageBox.Show("Select a contact to edit", "Contact not selected");
             }
             else
             {
@@ -104,7 +104,7 @@ namespace ContactsAppUI
             {
                 Contact contact = _displayedContacts[selectedIndex];
                 SurnameTextBox.Text = contact.Surname;
-                var dialogResult = MessageBox.Show("Delete this entry?", "Confirm", MessageBoxButtons.OKCancel);
+                var dialogResult = MessageBox.Show("Do you really want to remove this contact: " + contact.Surname, "Confirmation", MessageBoxButtons.OKCancel);
                 if (dialogResult == DialogResult.OK)
                 {
                     var ProjectIndex = _project.ContactsList.IndexOf(contact);
