@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.UnitTests", "Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{24E98C8E-EE41-4A00-9E22-616AB53231C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "Installer\Installer.csproj", "{A8FF63BC-E827-45AD-8327-CC46B367F3B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{D5C3DE93-5E20-4F19-ACD0-70A8A3AF33E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5C3DE93-5E20-4F19-ACD0-70A8A3AF33E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5C3DE93-5E20-4F19-ACD0-70A8A3AF33E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8FF63BC-E827-45AD-8327-CC46B367F3B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FF63BC-E827-45AD-8327-CC46B367F3B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FF63BC-E827-45AD-8327-CC46B367F3B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FF63BC-E827-45AD-8327-CC46B367F3B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
