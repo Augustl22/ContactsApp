@@ -44,8 +44,10 @@ namespace ContactsAppUI
                 _displayedContacts.Add(contact);
                 ContactsListBox.Items.Add(contact.Surname);
                 ProjectManager.SaveToFile(_project, ProjectManager.path);
+                SortListBox();
+                var viewContact = _displayedContacts.IndexOf(contact);
+                ContactsListBox.SetSelected(viewContact, true);
             }
-            SortListBox();
             ShowBirthdayReminder();
         }
 
