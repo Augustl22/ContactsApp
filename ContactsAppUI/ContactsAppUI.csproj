@@ -126,8 +126,8 @@
     <PostBuildEvent>md "$(SolutionDir)InstallScripts"
 md "$(SolutionDir)InstallScripts\Installers"
 md "$(SolutionDir)InstallScripts\Release"
-xcopy "$(ProjectDir)$(OutDir)*.dll" $(SolutionDir)InstallScripts\Release
-xcopy "$(ProjectDir)$(OutDir)*.exe" $(SolutionDir)InstallScripts\Release</PostBuildEvent>
+xcopy "$(ProjectDir)$(OutDir)*.dll" "$(SolutionDir)InstallScripts\Release"
+xcopy "$(ProjectDir)$(OutDir)*.exe" "$(SolutionDir)InstallScripts\Release"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>RD /S /Q "$(SolutionDir)InstallScripts\Release"</PreBuildEvent>
