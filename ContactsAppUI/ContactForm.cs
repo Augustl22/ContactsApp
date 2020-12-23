@@ -53,6 +53,7 @@ namespace ContactsAppUI
             DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
         /// <summary>
         /// Кнопка OK при добавление контакта
         /// </summary>
@@ -82,6 +83,7 @@ namespace ContactsAppUI
                 this.Close();
             }
         }
+
         /// <summary>
         /// Считывание фамилии с textbox'a и выделение, если неправильный ввод
         /// </summary>
@@ -97,6 +99,7 @@ namespace ContactsAppUI
                 SurnameTextBox.BackColor = Color.LightSalmon;
             }
         }
+
         /// <summary>
         /// Считывание имени с textbox'a и выделение, если неправильный ввод
         /// </summary>
@@ -112,6 +115,7 @@ namespace ContactsAppUI
                 NameTextBox.BackColor = Color.LightSalmon;
             }
         }
+
         /// <summary>
         /// Считывание даты дня рождения с DateTimePicker'а
         /// </summary>
@@ -124,6 +128,7 @@ namespace ContactsAppUI
             catch (Exception)
             { }
         }
+
         /// <summary>
         /// Считывание e-mail с textbox'a и выделение, если неправильный ввод
         /// </summary>
@@ -139,6 +144,7 @@ namespace ContactsAppUI
                 EmailTextBox.BackColor = Color.LightSalmon;
             }
         }
+
         /// <summary>
         /// Считывание IdVk с textbox'a и выделение, если неправильный ввод
         /// </summary>
@@ -154,6 +160,7 @@ namespace ContactsAppUI
                 IdVkTextBox.BackColor = Color.LightSalmon;
             }
         }
+
         /// <summary>
         /// Считывание номера телефона с textbox'a и выделение, если неправильный ввод
         /// </summary>
