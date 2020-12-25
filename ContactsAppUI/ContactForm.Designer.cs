@@ -49,7 +49,7 @@
             this.BirthdayDateTimePicker.Location = new System.Drawing.Point(65, 64);
             this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
             this.BirthdayDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.BirthdayDateTimePicker.TabIndex = 26;
+            this.BirthdayDateTimePicker.TabIndex = 19;
             this.BirthdayDateTimePicker.ValueChanged += new System.EventHandler(this.BirthdayDateTimePicker_ValueChanged);
             // 
             // IdVkTextBox
@@ -152,7 +152,7 @@
             this.CancleButton.Location = new System.Drawing.Point(336, 174);
             this.CancleButton.Name = "CancleButton";
             this.CancleButton.Size = new System.Drawing.Size(75, 23);
-            this.CancleButton.TabIndex = 27;
+            this.CancleButton.TabIndex = 28;
             this.CancleButton.Text = "Cancel";
             this.CancleButton.UseVisualStyleBackColor = true;
             this.CancleButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -163,7 +163,7 @@
             this.OKButton.Location = new System.Drawing.Point(255, 174);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
-            this.OKButton.TabIndex = 28;
+            this.OKButton.TabIndex = 27;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);

@@ -163,9 +163,10 @@ namespace ContactsAppUI
             }
 
             var isVible = BirthdaytextBox.Text == "";
-            BirthpictureBox.Visible = !isVible;
+
             BirthdayTodayLabel.Visible = !isVible;
             BirthdaytextBox.Visible = !isVible;
+            BirthpictureBox.Visible = !isVible;
 
         }
 

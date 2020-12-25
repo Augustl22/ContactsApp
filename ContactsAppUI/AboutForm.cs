@@ -5,6 +5,10 @@ namespace ContactsAppUI
 {
     public partial class AboutForm : Form
     {
+        private void AboutForm_Load(object sender, EventArgs e)
+        {
+            ShowIcon = false;
+        }
         public AboutForm()
         {
             InitializeComponent();
@@ -15,5 +19,7 @@ namespace ContactsAppUI
             var url = GitHubLinkLabel.Text;
             System.Diagnostics.Process.Start(url);
         }
+
+
     }
 }
