@@ -139,7 +139,6 @@ namespace ContactsApp
         }
         public PhoneNumber PhoneNumber { get; set; } = new PhoneNumber();
 
-        public Contact() { }
 
         /// <summary>
         /// Свойство даты рождения.
